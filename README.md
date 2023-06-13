@@ -4,14 +4,12 @@ SoftChart est une application web intuitive et performante qui vous permet de cr
 
 ## Table des matières
 
-- [SoftChart - Votre application web de création de diagrammes](#softchart---votre-application-web-de-création-de-diagrammes)
-  - [Table des matières](#table-des-matières)
-  - [Fonctionnalités](#fonctionnalités)
-  - [Technologies utilisées](#technologies-utilisées)
-  - [Comment démarrer](#comment-démarrer)
-  - [Contribution](#contribution)
-  - [Support](#support)
-  - [License](#license)
+- [Fonctionnalités](#fonctionnalités)
+- [Technologies utilisées](#technologies-utilisées)
+- [Comment démarrer](#comment-démarrer)
+- [Contribution](#contribution)
+- [Support](#support)
+- [License](#license)
 
 ## Fonctionnalités
 
