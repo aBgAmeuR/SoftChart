@@ -81,6 +81,6 @@ If you encounter any issues with the SoftChart application, or have any question
 
 ## License
 
-Licensed under the [GNU General Public License v3.0]((https://github.com/aBgAmeuR/SoftChart/blob/main/LICENSE)).
+Licensed under the [GNU General Public License v3.0](https://github.com/aBgAmeuR/SoftChart/blob/main/LICENSE).
 
 **Thanks for using SoftChart!**
