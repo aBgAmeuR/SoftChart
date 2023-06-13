@@ -2,6 +2,7 @@
 const nextConfig = {
   output: "export",
   reactStrictMode: true,
+  target: "serverless",
   experimental: {
     appDir: true,
   },
