@@ -1,18 +1,25 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
+  name: "SoftChart",
   description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+    "Create your own UML diagrams.",
   mainNav: [
     {
-      title: "Home",
+      title: "Présentation",
       href: "/",
+    },
+    {
+      title: "Mes créations",
+      href: "/creations",
+    },
+    {
+      title: "Mon profil",
+      href: "/profil",
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    github: "https://github.com/aBgAmeuR",
+    docs: "",
   },
 }
