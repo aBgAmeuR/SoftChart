@@ -47,7 +47,7 @@ Vous pouvez cloner ce dépôt en utilisant git :
 
 ```bash
 
-git clone https://github.com/[username]/SoftChart.git
+git clone https://github.com/aBgAmeuR/SoftChart.git
 cd SoftChart
 ```
 
@@ -83,4 +83,4 @@ Si vous rencontrez des problèmes avec l'application SoftChart, ou si vous avez 
 
 Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
 
-Merci d'utiliser SoftChart !
+**Merci d'utiliser SoftChart !**
