@@ -2,11 +2,10 @@ export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
   name: "SoftChart",
-  description:
-    "Create your own UML diagrams.",
+  description: "Create your own UML diagrams.",
   mainNav: [
     {
-      title: "Présentation",
+      title: "Accueil",
       href: "/",
     },
     {

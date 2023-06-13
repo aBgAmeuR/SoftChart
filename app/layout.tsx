@@ -33,6 +33,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
       <html lang="en" suppressHydrationWarning>
+        {/* eslint-disable-next-line @next/next/no-head-element */}
         <head />
         <body
           className={cn(

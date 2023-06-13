@@ -14,24 +14,89 @@ export const Icons = {
   twitter: Twitter,
   logo: (props: LucideProps) => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
-      <rect x="22.2482" y="1.05115" width="0.70073" height="17.5182" fill="currentcolor" />
-      <rect x="1.05109" y="5.43066" width="0.70073" height="17.5182" fill="currentcolor" />
-      <rect x="5.43066" y="1.75183" width="0.70073" height="17.5182" transform="rotate(-90 5.43066 1.75183)" fill="currentcolor" />
-      <rect x="1.05109" y="22.9489" width="0.70073" height="17.5182" transform="rotate(-90 1.05109 22.9489)" fill="currentcolor" />
+      <rect
+        x="22.2482"
+        y="1.05115"
+        width="0.70073"
+        height="17.5182"
+        fill="currentcolor"
+      />
+      <rect
+        x="1.05109"
+        y="5.43066"
+        width="0.70073"
+        height="17.5182"
+        fill="currentcolor"
+      />
+      <rect
+        x="5.43066"
+        y="1.75183"
+        width="0.70073"
+        height="17.5182"
+        transform="rotate(-90 5.43066 1.75183)"
+        fill="currentcolor"
+      />
+      <rect
+        x="1.05109"
+        y="22.9489"
+        width="0.70073"
+        height="17.5182"
+        transform="rotate(-90 1.05109 22.9489)"
+        fill="currentcolor"
+      />
       <circle cx="1.40146" cy="22.5985" r="1.40146" fill="currentcolor" />
       <circle cx="22.5985" cy="1.40146" r="1.40146" fill="currentcolor" />
-      <path d="M18.5693 22.5985C21.1971 22.5985 22.5985 21.416 22.5985 18.5693" stroke="currentcolor" stroke-width="0.75" />
-      <path d="M5.43069 1.40149C2.45258 1.40149 1.40149 2.54018 1.40149 5.43069" stroke="currentcolor" stroke-width="0.75" />
-      <path d="M1.75183 8.93433H22.2482" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M17.4307 22.2482V1.75182" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M14.8029 22.2482L14.8029 1.75182" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M10.1606 22.2482L10.1606 1.75182" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M7.53284 22.2482L7.53284 1.75182" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M1.75183 13.8394H22.2482" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M1.88324 22.0292C1.88324 22.0292 2.58397 15.3722 4.90514 12.7883C7.22631 10.2044 8.62777 10.5547 12.438 11.1241C16.2482 11.6934 7.79565 5.7372 13.0511 5.43064C18.3066 5.12407 21.8102 1.70801 21.8102 1.70801" stroke="currentcolor" stroke-width="0.46875" />
-      <path d="M2.146 22.0292C5.33453 21.5678 8.07064 21.8769 9.0657 20.1022C9.88622 18.1265 9.75145 16.5976 11.6934 15.416C13.6828 14.2683 18.4796 15.2775 19.2263 12.3066C19.973 9.33564 16.5986 8.18977 18.3504 5.69342C20.1022 3.19707 22.0292 2.49634 22.0292 2.49634" stroke="currentcolor" stroke-width="0.46875" />
+      <path
+        d="M18.5693 22.5985C21.1971 22.5985 22.5985 21.416 22.5985 18.5693"
+        stroke="currentcolor"
+        strokeWidth="0.75"
+      />
+      <path
+        d="M5.43069 1.40149C2.45258 1.40149 1.40149 2.54018 1.40149 5.43069"
+        stroke="currentcolor"
+        strokeWidth="0.75"
+      />
+      <path
+        d="M1.75183 8.93433H22.2482"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M17.4307 22.2482V1.75182"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M14.8029 22.2482L14.8029 1.75182"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M10.1606 22.2482L10.1606 1.75182"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M7.53284 22.2482L7.53284 1.75182"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M1.75183 13.8394H22.2482"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M1.88324 22.0292C1.88324 22.0292 2.58397 15.3722 4.90514 12.7883C7.22631 10.2044 8.62777 10.5547 12.438 11.1241C16.2482 11.6934 7.79565 5.7372 13.0511 5.43064C18.3066 5.12407 21.8102 1.70801 21.8102 1.70801"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
+      <path
+        d="M2.146 22.0292C5.33453 21.5678 8.07064 21.8769 9.0657 20.1022C9.88622 18.1265 9.75145 16.5976 11.6934 15.416C13.6828 14.2683 18.4796 15.2775 19.2263 12.3066C19.973 9.33564 16.5986 8.18977 18.3504 5.69342C20.1022 3.19707 22.0292 2.49634 22.0292 2.49634"
+        stroke="currentcolor"
+        strokeWidth="0.46875"
+      />
     </svg>
-
   ),
   gitHub: (props: LucideProps) => (
     <svg viewBox="0 0 438.549 438.549" {...props}>
