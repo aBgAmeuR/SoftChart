@@ -40,7 +40,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
     <div id='Sidebar-right'>
       <div>
         <label htmlFor="name">Nom</label>
-        <input type="text" name="name" id="name" value={name} onChange={(e) => setName(e.target.value)} />
+        <input type="text" name="name" className="name" value={name} onChange={(e) => setName(e.target.value)} />
 
         <label htmlFor="type">Type</label>
         <select name="type" id="type" value={type} onChange={(e) => setType(e.target.value)}>

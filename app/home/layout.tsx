@@ -1,3 +1,5 @@
+import { SiteHeader } from "@/components/site-header"
+
 interface RootLayoutProps {
   children: React.ReactNode
 }
@@ -5,7 +7,8 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <>
-      {children}
+      <SiteHeader />
+      <div className="flex-1">{children}</div>
     </>
   )
 }

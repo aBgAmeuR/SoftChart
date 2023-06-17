@@ -220,7 +220,7 @@ function Flow() {
   }, [setNodes]);
 
   return (
-    <div ref={reactFlowWrapper} style={{ height: 'calc(100vh - 65px)' }}>
+    <div ref={reactFlowWrapper} style={{ height: '100vh' }}>
       <ReactFlowProvider>
         <div id="FlowProvider">
           <LeftSidebar setAddingEdge={setAddingEdge} />
