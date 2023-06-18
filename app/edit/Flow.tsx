@@ -109,7 +109,11 @@ const Data: iData = {
       source: 'n1',
       target: 'n2',
       type: 'floating',
-      markerEnd: { type: MarkerType.Arrow }
+      markerEnd: { type: MarkerType.Arrow },
+      data: {
+        type: 'association',
+        path: 'bezierz'
+      }
     }
   ]
 };

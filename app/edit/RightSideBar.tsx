@@ -43,7 +43,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
         <input type="text" name="name" className="name" value={name} onChange={(e) => setName(e.target.value)} />
 
         <label htmlFor="type">Type</label>
-        <select name="type" id="type" value={type} onChange={(e) => setType(e.target.value)}>
+        <select name="type" className="type" value={type} onChange={(e) => setType(e.target.value)}>
           <option value="class">Class</option>
           <option value="interface">Interface</option>
           <option value="abstract">Abstract</option>
@@ -53,18 +53,18 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
         <div className="attributes">
           {attributes.map((attribute, index) => (
             <div key={index}>
-              <input type="text" name="name" id="name" value={attribute.name} onChange={(e) => {
+              <input type="text" name="name" className="name" value={attribute.name} onChange={(e) => {
                 const newAttributes = [...attributes];
                 newAttributes[index].name = e.target.value;
                 setAttributes(newAttributes);
               }}
               />
-              <input type="text" name="type" id="type" value={attribute.type} onChange={(e) => {
+              <input type="text" name="type" className="type" value={attribute.type} onChange={(e) => {
                 const newAttributes = [...attributes];
                 newAttributes[index].type = e.target.value;
                 setAttributes(newAttributes);
               }} />
-              <select name="visibility" id="visibility" value={attribute.visibility} onChange={(e) => {
+              <select name="visibility" className="visibility" value={attribute.visibility} onChange={(e) => {
                 const newAttributes = [...attributes];
                 newAttributes[index].visibility = e.target.value;
                 setAttributes(newAttributes);
@@ -95,7 +95,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
                 <input
                   type="text"
                   name="name"
-                  id="name"
+                  className="name"
                   value={method.name}
                   onChange={(e) => {
                     const newMethods = [...methods];
@@ -106,7 +106,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
                 <input
                   type="text"
                   name="returnType"
-                  id="returnType"
+                  className="returnType"
                   value={method.return}
                   onChange={(e) => {
                     const newMethods = [...methods];
@@ -116,7 +116,7 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
                 />
                 <select
                   name="visibility"
-                  id="visibility"
+                  className="visibility"
                   value={method.visibility}
                   onChange={(e) => {
                     const newMethods = [...methods];
@@ -132,12 +132,12 @@ const RightSidebar: React.FC<RightSidebarProps> = ({ node, updateNode }) => {
                   <label>Parameters</label>
                   {method.parameters?.map((parameter, parameterIndex) => (
                     <div key={parameterIndex}>
-                      <input type="text" name="parameterName" id="parameterName" value={parameter.name} onChange={(e) => {
+                      <input type="text" name="parameterName" className="parameterName" value={parameter.name} onChange={(e) => {
                         const newMethods = [...methods] || [];
                         newMethods[index].parameters[parameterIndex].name = e.target.value;
                         setMethods(newMethods);
                       }} />
-                      <input type="text" name="parameterType" id="parameterType" value={parameter.type} onChange={(e) => {
+                      <input type="text" name="parameterType" className="parameterType" value={parameter.type} onChange={(e) => {
                         const newMethods = [...methods];
                         newMethods[index].parameters[parameterIndex].type = e.target.value;
                         setMethods(newMethods);

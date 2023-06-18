@@ -1,9 +1,8 @@
-import { EdgeProps } from 'reactflow';
+import { EdgeProps, getStraightPath, useStore, getBezierPath, getSmoothStepPath } from 'reactflow';
 import { useCallback } from 'react';
-import { useStore, getBezierPath } from 'reactflow';
 import { getEdgeParams } from './utils';
 
-function FloatingEdge({ id, source, target, markerEnd, style } : EdgeProps) {
+function FloatingEdge({ id, source, target, markerEnd, style, data }: EdgeProps) {
   const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source), [source]));
   const targetNode = useStore(useCallback((store) => store.nodeInternals.get(target), [target]));
 
@@ -13,14 +12,24 @@ function FloatingEdge({ id, source, target, markerEnd, style } : EdgeProps) {
 
   const { sx, sy, tx, ty, sourcePos, targetPos } = getEdgeParams(sourceNode, targetNode);
 
-  const [edgePath] = getBezierPath({
-    sourceX: sx,
-    sourceY: sy,
-    sourcePosition: sourcePos,
-    targetPosition: targetPos,
-    targetX: tx,
-    targetY: ty,
-  });
+  let edgePath = '';
+  if (data?.path === 'bezier') {
+    [edgePath] = getBezierPath({
+      sourceX: sx,
+      sourceY: sy,
+      sourcePosition: sourcePos,
+      targetPosition: targetPos,
+      targetX: tx,
+      targetY: ty,
+    });
+  } else {
+    [edgePath] = getStraightPath({
+      sourceX: sx,
+      sourceY: sy,
+      targetX: tx,
+      targetY: ty,
+    });
+  }
 
   return (
     <path
@@ -34,3 +43,7 @@ function FloatingEdge({ id, source, target, markerEnd, style } : EdgeProps) {
 }
 
 export default FloatingEdge;
+function getStepPath(arg0: { sourceX: number; sourceY: number; targetX: number; targetY: number; }): [string] {
+  throw new Error('Function not implemented.');
+}
+
