@@ -133,7 +133,6 @@ function Flow() {
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance<unknown, unknown> | null>(null);
   const [selectedNode, setSelectedNode] = useState<Node | null>(null);
 
-
   const onConnect = useCallback((params: Edge | Connection) =>
     setEdges((eds) =>
       addEdge({ ...params, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)

@@ -32,8 +32,9 @@ const LeftSidebar: FC<SidebarProps> = ({ setAddingEdge }) => {
 
   return (
     <aside id='Sidebar-left'>
-      <div onDragStart={(event) => onDragStart(event, 'classNode', defaultDataClass)} draggable>
-        <div className='ClassNode' >
+      <p>Classes</p>
+      <div className="classes">
+        <div className='ClassNode' onDragStart={(event) => onDragStart(event, 'classNode', defaultDataClass)} draggable>
           <div className="name">
             <p>Class</p>
           </div>
@@ -44,9 +45,7 @@ const LeftSidebar: FC<SidebarProps> = ({ setAddingEdge }) => {
           <div>
           </div>
         </div>
-      </div>
-      <div onDragStart={(event) => onDragStart(event, 'classNode', defaultDataAbstract)} draggable>
-        <div className='ClassNode' >
+        <div className='ClassNode' onDragStart={(event) => onDragStart(event, 'classNode', defaultDataAbstract)} draggable>
           <div className="name">
             <p>Abstract</p>
           </div>
@@ -57,14 +56,23 @@ const LeftSidebar: FC<SidebarProps> = ({ setAddingEdge }) => {
           <div>
           </div>
         </div>
-      </div>
-      <div onDragStart={(event) => onDragStart(event, 'classNode', defaultDataInterface)} draggable>
-        <div className='ClassNode' >
+        <div className='ClassNode' onDragStart={(event) => onDragStart(event, 'classNode', defaultDataInterface)} draggable>
           <div className="name">
             <p>Interface</p>
           </div>
           <div className="line"></div>
           <div>
+          </div>
+          <div className="line"></div>
+          <div>
+          </div>
+        </div>
+      </div>
+      <p>Relations</p>
+      <div className="edges">
+        <div className='EdgeNode' onDragStart={(event) => onDragStart(event, 'edgeNode', '')} draggable>
+          <div className="name">
+            <p>Association</p>
           </div>
           <div className="line"></div>
           <div>
