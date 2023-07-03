@@ -1,7 +1,7 @@
 import {
-  ImagePlus,
+  PanelTop,
+  Spline
 } from "lucide-react";
-import { useState } from "react";
 import { useReactFlow } from "reactflow";
 
 export type Bar = {
@@ -33,13 +33,13 @@ export function Bar({ onCreateNode, addEdgeMode, setAddEdgeMode }: Bar) {
           })
         }
       >
-        <ImagePlus size={18} strokeWidth={2} />
+        <PanelTop size={18} strokeWidth={2} />
       </Button>
       <Button
         active={addEdgeMode}
         onClick={() => setAddEdgeMode(!addEdgeMode)}
       >
-        <ImagePlus size={18} strokeWidth={2} />
+        <Spline size={18} strokeWidth={2} />
       </Button>
     </div>
   );
