@@ -40,7 +40,7 @@
   padding: 16px;
   width: 15%;
   height: 100%;
-  background-color: #F4F4F4;
+  background-color: #f7f8fa;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -57,7 +57,7 @@
   padding: 16px;
   width: 15%;
   height: 100%;
-  background-color: #F4F4F4;
+  background-color: #f7f8fa;
 }
 #Sidebar-right .name {
   width: 100px;

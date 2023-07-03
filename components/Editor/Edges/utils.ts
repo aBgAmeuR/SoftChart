@@ -1,8 +1,8 @@
 import { Position, Node, Edge, MarkerType } from "reactflow";
-import ClassNode from "./ClassNode";
-import { iData } from "./Flow";
+import Class from "@/components/Editor/Nodes/Class";
+import { initialDataState } from "@/types/ClassDiagram";
 
-interface ClassNode extends Node {
+interface Class extends Node {
   addOutgoingEdge(edge: Edge): void;
   addIncomingEdge(edge: Edge): void;
 }
@@ -15,8 +15,8 @@ interface Point {
 type SmoothStepEdgeType = "smoothstep";
 
 function getNodeIntersection(
-  intersectionNode: Node | ClassNode,
-  targetNode: Node | ClassNode
+  intersectionNode: Node | Class,
+  targetNode: Node | Class
 ): Point {
   // https://math.stackexchange.com/questions/1724792/an-algorithm-for-finding-the-intersection-point-between-a-center-of-vision-and-a
   const {
@@ -89,8 +89,8 @@ export function getEdgeParams(source: Node, target: Node) {
 }
 
 export function addEdgeToNodes(source: Node, target: Node) {
-  const sourceNode = source as ClassNode;
-  const targetNode = target as ClassNode;
+  const sourceNode = source as Class;
+  const targetNode = target as Class;
 
   const edge: Edge = {
     id: `${sourceNode.id}-${targetNode.id}`,
@@ -109,7 +109,7 @@ export function addEdgeToNodes(source: Node, target: Node) {
   return edge;
 }
 
-export function createNodesAndEdges(Data: iData) {
+export function createNodesAndEdges(Data: initialDataState) {
   const nodes: Node[] = Data.nodes;
   const edges: Edge[] = Data.edges;
  

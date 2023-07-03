@@ -81,3 +81,13 @@
 }
 
 @import url(./edit.css);
+/* 
+.react-flow__controls {
+  @apply bg-neutral-800 rounded overflow-hidden;
+}
+.react-flow__controls button {
+  @apply bg-neutral-800 text-white border-white/10 last-of-type:border-transparent p-2 duration-200 hover:bg-white/10 active:bg-white/20;
+}
+.react-flow__controls path {
+  @apply fill-white;
+} */
