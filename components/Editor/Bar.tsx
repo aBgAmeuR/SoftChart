@@ -15,7 +15,7 @@ export function Bar({ onCreateNode, addEdgeMode, setAddEdgeMode }: Bar) {
 
 
   return (
-    <div className="absolute left-[15px] top-[4.75rem] flex flex-col overflow-hidden rounded bg-white">
+    <div className="absolute left-[15px] top-[4.75rem] flex flex-col overflow-hidden rounded bg-white drop-shadow-sm">
       <Button
         onClick={() =>
           onCreateNode({

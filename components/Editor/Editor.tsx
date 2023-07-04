@@ -12,7 +12,7 @@ import { Nodes } from "./Nodes";
 import { initialDataState } from "@/types/ClassDiagram";
 import { Edges } from "./Edges";
 import ConnectionLine from "./Edges/ConnectionLine";
-import Class from "./Nodes/Class";
+import { OptionBar } from "./OptionBar";
 
 const Data: initialDataState = {
   nodes: [
@@ -55,7 +55,7 @@ const Data: initialDataState = {
       position: { x: 550, y: 50 },
       data: {
         name: 'Test 2',
-        type: 'class',
+        type: 'Class',
         attributes: [
           {
             name: 'test',
@@ -130,11 +130,11 @@ const Data: initialDataState = {
 };
 
 export function Editor() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNode, addEdgeMode, setAddEdgeMode } =
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNode, addEdgeMode, setAddEdgeMode, editNode } =
     Nodes.useNodesState(Data);
 
   return (
-    <>
+    <div className="flex h-[calc(100vh_-_56px)] flex-row ">
       <ReactFlow
         nodes={nodes}
         onNodesChange={onNodesChange}
@@ -171,8 +171,7 @@ export function Editor() {
         addEdgeMode={addEdgeMode}
         setAddEdgeMode={setAddEdgeMode}
       />
-    </>
+      <OptionBar editNode={editNode} />
+    </div>
   );
 }
-
-export namespace Editor { }

@@ -32,17 +32,19 @@ export namespace Nodes {
 
   export function useNodesState(Data: initialDataState): NodesState {
     const { nodes: initialNodes, edges: initialEdges } = Data;
-
+    
     const [nodes, setNodes] = useState<Node[]>(initialNodes);
     const [edges, setEdges] = useState<Edge[]>(initialEdges);
+
+    const [addEdgeMode, setAddEdgeMode] = useState(false);
 
     const addNode = useCallback((node: Node) => {
       setNodes([...nodes, node]);
     }, [nodes, setNodes]);
 
     const editNode = useCallback((id: string, newData: any) => {
-      setNodes(
-        nodes.map((node) => {
+      setNodes(nodes => {
+        return nodes.map(node => {
           if (node.id === id) {
             return {
               ...node,
@@ -53,9 +55,10 @@ export namespace Nodes {
             };
           }
           return node;
-        })
-      );
-    }, [nodes]);
+        });
+      });
+    }, []);
+    
 
     const deleteNode = useCallback((id: string) => {
       setNodes(nodes.filter((node) => node.id !== id));
@@ -91,16 +94,24 @@ export namespace Nodes {
       [setEdges]
     );
 
-    const [addEdgeMode, setAddEdgeMode] = useState(false);
+
 
     useEffect(() => {
-      setNodes(nodes.map((node) => ({
-          ...node,
-        data: {
-          ...node.data,
-          addEdgeMode: addEdgeMode,
+      const resNodes = nodes.map((node) => {
+        if (node.data.addEdgeMode !== addEdgeMode) {
+          return {
+            ...node,
+            data: {
+              ...node.data,
+              addEdgeMode: addEdgeMode,
+            },
+          };
         }
-        })));
+        return node;
+      });
+      if (JSON.stringify(resNodes) !== JSON.stringify(nodes)) {
+        setNodes(resNodes);
+      }
     }, [nodes, addEdgeMode]);
 
     return {
