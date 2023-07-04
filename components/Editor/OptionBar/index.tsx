@@ -33,7 +33,7 @@ export function OptionBar({ editNode } : OptionBarProps) {
   }
 
   return (
-    <div className="flex w-96 flex-col p-4">
+    <div className="flex w-[350px] flex-col border-l border-neutral-100 p-4 dark:border-white/5">
       {getOptions()}
     </div>
   )

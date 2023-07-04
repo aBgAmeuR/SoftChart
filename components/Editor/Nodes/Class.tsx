@@ -22,7 +22,7 @@ const ClassNode: React.FC<NodeProps<ClassType>> = ({ data }) => {
   const isConnecting = !!connectionNodeId;
 
   return (
-    <div className='ClassNode'>
+    <div className='rounded-[5px] border border-solid border-[#333] bg-[white] p-[5px] dark:bg-neutral-900'>
       {!isConnecting && (
         <Handle
           className="customHandle"
@@ -32,18 +32,18 @@ const ClassNode: React.FC<NodeProps<ClassType>> = ({ data }) => {
         />
       )}
       <Handle type="target" position={Position.Top} style={{ ...handleStyles, ...(addEdgeMode ? { display: 'block' } : { display: 'none' }) }} />
-      <div className="name">
-        {type === 'interface' && <p>&lt;&lt;interface&gt;&gt;</p>}
-        {type === 'abstract' && <p>&lt;&lt;abstract&gt;&gt;</p>}
-        <p className='data-name'>{data.name}</p>
+      <div className="flex flex-col items-center justify-center">
+        {type === 'interface' && <p className='text-xs'>&lt;&lt;interface&gt;&gt;</p>}
+        {type === 'abstract' && <p className='text-xs'>&lt;&lt;abstract&gt;&gt;</p>}
+        <p className='text-lg font-bold'>{data.name}</p>
       </div>
-      <div className="line"></div>
+      <div className="relative left-[-5px] mx-0 my-[5px] h-px w-[calc(100%_+_10px)] bg-[#333]"></div>
       <div>
         {attributes.map((attribute, index) => (
           <Attribute key={index} name={attribute.name} type={attribute.type} visibility={attribute.visibility} />
         ))}
       </div>
-      <div className="line"></div>
+      <div className="relative left-[-5px] mx-0 my-[5px] h-px w-[calc(100%_+_10px)] bg-[#333]"></div>
       <div>
         {methods.map((method, index) => (
           <Method key={index} name={method.name} parameters={method.parameters} return={method.return} visibility={method.visibility} />
@@ -96,7 +96,7 @@ class Method extends React.Component<MethodProps, object> {
 
   render() {
     return (
-      <div className="method">
+      <div className="flex flex-row">
         <span>{this.getVisibility() + (this.props.name || '') + '('}</span>
         <div className='parameters'>
           {this.props.parameters && this.props.parameters.map((parameter, i) => {

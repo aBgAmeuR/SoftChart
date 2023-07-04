@@ -5,7 +5,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const selectVariants = cva(
-  "relative inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none disabled:opacity-50 disabled:pointer-events-none cursor-pointer",
+  "relative inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none cursor-pointer dark:bg-neutral-800",
   {
     variants: {
       variant: {
@@ -15,7 +15,7 @@ const selectVariants = cva(
       },
       size: {
         default: "h-10 py-2 px-4",
-        sm: "h-9 px-3 rounded-md",
+        sm: "h-8 px-2 rounded-md",
         lg: "h-11 px-8 rounded-md",
       },
     },
@@ -36,14 +36,16 @@ export interface SelectProps
 }
 
 const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
-  ({ className, variant, size = "default", asChild = false, ...props }, ref) => {
+  ({ className, variant, size = "default", asChild = false, children, ...props }, ref) => {
     const Comp = asChild ? Slot : "select";
     return (
       <Comp
         className={cn(selectVariants({ variant, size, className }))}
         ref={ref}
         {...props}
-      />
+      >
+        {children}
+      </Comp>
     );
   }
 );

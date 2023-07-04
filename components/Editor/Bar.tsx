@@ -15,7 +15,7 @@ export function Bar({ onCreateNode, addEdgeMode, setAddEdgeMode }: Bar) {
 
 
   return (
-    <div className="absolute left-[15px] top-[4.75rem] flex flex-col overflow-hidden rounded bg-white drop-shadow-sm">
+    <div className="absolute left-[15px] top-[4.75rem] flex flex-col overflow-hidden rounded bg-white drop-shadow-sm dark:bg-neutral-800">
       <Button
         onClick={() =>
           onCreateNode({
@@ -56,8 +56,7 @@ function Button({
 }) {
   return (
     <button
-      className={`border-t border-white/10 p-2 duration-200 first-of-type:border-t-transparent hover:bg-white/10 active:bg-white/20 ${active && "bg-black/10 text-indigo-400"
-        }`}
+      className={`border-t border-neutral-900/10 p-2 duration-200 first-of-type:border-t-transparent hover:bg-white/10 active:bg-white/20 dark:border-white/10 ${active && "bg-black/10 text-indigo-400 "}`}
       onClick={onClick ?? undefined}
     >
       {children}

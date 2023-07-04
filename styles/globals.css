@@ -37,14 +37,14 @@
   }
 
   .dark {
-    --background: 224 71% 4%;
-    --foreground: 213 31% 91%;
+    --background: 23 23 23;
+    --foreground: 38 38 38;
 
-    --muted: 223 47% 11%;
-    --muted-foreground: 215.4 16.3% 56.9%;
+    --muted: 38 38 38;
+    --muted-foreground: 38 38 38;
 
-    --accent: 216 34% 17%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 38 38 38;
+    --accent-foreground: 38 38 38;
 
     --popover: 224 71% 4%;
     --popover-foreground: 215 20.2% 65.1%;
@@ -80,14 +80,13 @@
   }
 }
 
-@import url(./edit.css);
-/* 
+
 .react-flow__controls {
-  @apply bg-neutral-800 rounded overflow-hidden;
+  @apply bg-slate-50 rounded overflow-hidden dark:bg-neutral-900;
 }
 .react-flow__controls button {
-  @apply bg-neutral-800 text-white border-white/10 last-of-type:border-transparent p-2 duration-200 hover:bg-white/10 active:bg-white/20;
+  @apply bg-white text-white border-neutral-900/10 last-of-type:border-transparent p-2 duration-200 hover:bg-white/10 active:bg-white/20 dark:bg-neutral-800 dark:hover:bg-neutral-800/10 dark:border-white/10;
 }
 .react-flow__controls path {
-  @apply fill-white;
-} */
+  @apply fill-neutral-800 dark:fill-white;
+}
