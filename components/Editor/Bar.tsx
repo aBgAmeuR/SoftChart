@@ -1,6 +1,6 @@
+import { useEffect, useCallback } from "react"
 import { PanelTop, Spline } from "lucide-react"
 import { useReactFlow } from "reactflow"
-import { useEffect } from 'react';
 
 export type Bar = {
   onCreateNode: (newNode: { type: string; data: any; position: any }) => void
@@ -10,22 +10,7 @@ export type Bar = {
 
 export function Bar({ onCreateNode, addEdgeMode, setAddEdgeMode }: Bar) {
   const flow = useReactFlow()
-
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.keyCode === 27) {
-        // Escape key was pressed
-        setAddEdgeMode(false)
-      }
-    }
-
-    document.addEventListener("keydown", handleKeyDown)
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown)
-    }
-  }, [setAddEdgeMode])
-
+  
   return (
     <div className="absolute left-[15px] top-[4.75rem] flex flex-col overflow-hidden rounded bg-white drop-shadow-sm dark:bg-neutral-800">
       <Button

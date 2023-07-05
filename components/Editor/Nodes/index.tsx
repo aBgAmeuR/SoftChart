@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react"
+import { use, useCallback, useEffect, useState } from "react"
 import {
   Connection,
   Edge,
@@ -49,6 +49,7 @@ export namespace Nodes {
     const [edges, setEdges] = useState<Edge[]>(initialEdges)
 
     const [addEdgeMode, setAddEdgeMode] = useState(false)
+    const [shiftPressed, setShiftPressed] = useState(false)
 
     const addNode = useCallback(
       (node: Node) => {
@@ -127,11 +128,11 @@ export namespace Nodes {
             eds
           )
         )
-        if (!event.shiftKey) {
+        if (!shiftPressed) {
           setAddEdgeMode(false)
         }
       },
-      [setEdges, setAddEdgeMode]
+      [shiftPressed]
     )
 
     useEffect(() => {
@@ -151,6 +152,28 @@ export namespace Nodes {
         setNodes(resNodes)
       }
     }, [nodes, addEdgeMode])
+
+    useEffect(() => {
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === "Shift") {
+          setShiftPressed(true)
+        }
+        if (e.key === "Escape") {
+          setAddEdgeMode(false)
+        }
+      }
+      const handleKeyUp = (e: KeyboardEvent) => {
+        if (e.key === "Shift") {
+          setShiftPressed(false)
+        }
+      }
+      document.addEventListener("keydown", handleKeyDown)
+      document.addEventListener("keyup", handleKeyUp)
+      return () => {
+        document.removeEventListener("keydown", handleKeyDown)
+        document.removeEventListener("keyup", handleKeyUp)
+      }
+    }, [])
 
     return {
       nodes,
