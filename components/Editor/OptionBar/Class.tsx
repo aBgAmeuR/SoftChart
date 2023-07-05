@@ -41,12 +41,107 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
           <option value="abstract">Abstraire</option>
         </Select>
       </div>
-      {/* <h1>{type.charAt(0).toUpperCase() + type.slice(1).toLowerCase()}</h1> */}
-      <div>
-        {getDescription(type)}
+      {getDescription(type)}
+      <div className="mt-5 flex flex-col gap-2 ">
+        <div className="flex flex-row justify-between">
+          <h1 className="text-xl font-medium dark:text-white">Attributs</h1>
+          <button
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-slate-50 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-900 "
+            onClick={() => setAttributes([...attributes, { name: "", type: "" }])}
+          >+</button>
+        </div>
+        <div className="flex flex-col gap-1">
+          {attributes.map((attribute, index) => getAttributeCode(attribute, index))}
+        </div>
+      </div>
+      <div className="mt-5 flex flex-col gap-2 ">
+        <div className="flex flex-row justify-between">
+          <h1 className="text-xl font-medium dark:text-white">Méthodes</h1>
+          <button
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-slate-50 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-900 "
+            onClick={() => setMethods([...methods, { name: "", return: "", visibility: "none" }])}
+          >+</button>
+        </div>
+        <div className="flex flex-col gap-1">
+          {methods.map((method, index) => getMethodCode(method, index))}
+        </div>
       </div>
     </>
   );
+
+  function getAttributeCode(attribute: Attribute, index: number) {
+    return (
+      <div key={index} className="flex flex-row items-center gap-2">
+        <Select variant="outline" size="sm" onChange={(e) => {
+          const newAttributes = [...attributes];
+          newAttributes[index].visibility = e.target.value;
+          setAttributes(newAttributes);
+        }} value={attribute.visibility}>
+          <option value="none">Vide</option>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+          <option value="protected">Protected</option>
+        </Select>
+        <input
+          className="w-[80px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
+          placeholder="Nom"
+          value={attribute.name}
+          onChange={(e) => {
+            const newAttributes = [...attributes];
+            newAttributes[index].name = e.target.value;
+            setAttributes(newAttributes);
+          }}
+        />
+        <input
+          className="w-[70px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
+          placeholder="Type"
+          value={attribute.type}
+          onChange={(e) => {
+            const newAttributes = [...attributes];
+            newAttributes[index].type = e.target.value;
+            setAttributes(newAttributes);
+          }}
+        />
+      </div>
+    );
+  }
+
+  function getMethodCode(method: Method, index: number) {
+    return (
+      <div key={index} className="flex flex-row items-center gap-2">
+        <Select variant="outline" size="sm" onChange={(e) => {
+          const newMethods = [...methods];
+          newMethods[index].visibility = e.target.value;
+          setMethods(newMethods);
+        }} value={method.visibility}>
+          <option value="none">Vide</option>
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+          <option value="protected">Protected</option>
+        </Select>
+        <input
+          className="w-[80px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
+          placeholder="Nom"
+          value={method.name}
+          onChange={(e) => {
+            const newMethods = [...methods];
+            newMethods[index].name = e.target.value;
+            setMethods(newMethods);
+          }}
+        />
+        <input
+          className="w-[70px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
+          placeholder="Return"
+          value={method.return}
+          onChange={(e) => {
+            const newMethods = [...methods];
+            newMethods[index].return = e.target.value;
+            setMethods(newMethods);
+          }}
+        />
+      </div>
+    );
+  }
 }
 
 function getDescription(type: string) {
@@ -61,5 +156,3 @@ function getDescription(type: string) {
       return null;
   }
 }
-
-
