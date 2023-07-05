@@ -1,6 +1,6 @@
 import { PanelTop, Spline } from "lucide-react"
 import { useReactFlow } from "reactflow"
-import { useEffect } from "react"
+import { useEffect, ChangeEvent } from 'react';
 
 export type Bar = {
   onCreateNode: (newNode: { type: string; data: any; position: any }) => void
@@ -12,7 +12,7 @@ export function Bar({ onCreateNode, addEdgeMode, setAddEdgeMode }: Bar) {
   const flow = useReactFlow()
 
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = (event: ChangeEvent) => {
       if (event.keyCode === 27) {
         // Escape key was pressed
         setAddEdgeMode(false)
