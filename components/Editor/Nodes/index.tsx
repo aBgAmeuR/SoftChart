@@ -1,50 +1,65 @@
-import { useCallback, useEffect, useState } from "react";
-import Class from "./Class";
-import { Connection, Edge, Node, MarkerType, addEdge, NodeChange, applyNodeChanges, OnNodesChange, OnEdgesChange, OnConnect, EdgeChange } from "reactflow";
-import { initialDataState } from "@/types/ClassDiagram";
+import { useCallback, useEffect, useState } from "react"
+import {
+  Connection,
+  Edge,
+  EdgeChange,
+  MarkerType,
+  Node,
+  NodeChange,
+  OnConnect,
+  OnEdgesChange,
+  OnNodesChange,
+  addEdge,
+  applyNodeChanges,
+} from "reactflow"
+
+import { initialDataState } from "@/types/ClassDiagram"
+
+import Class from "./Class"
 
 export type NodesState = {
-  nodes: Node[];
-  edges: Edge[];
-  addNode: (node: Node) => void;
-  editNode: (id: string, newData: any) => void;
-  deleteNode: (id: string) => void;
-  setEdgeAnimationState: (id: string, state: boolean) => void;
-  onNodesChange: OnNodesChange;
-  onEdgesChange: OnEdgesChange;
-  onConnect: OnConnect;
-  addEdgeMode: boolean;
-  setAddEdgeMode: (state: boolean) => void;
-};
+  nodes: Node[]
+  edges: Edge[]
+  addNode: (node: Node) => void
+  editNode: (id: string, newData: any) => void
+  deleteNode: (id: string) => void
+  setEdgeAnimationState: (id: string, state: boolean) => void
+  onNodesChange: OnNodesChange
+  onEdgesChange: OnEdgesChange
+  onConnect: OnConnect
+  addEdgeMode: boolean
+  setAddEdgeMode: (state: boolean) => void
+}
 
 export declare namespace Nodes {
-  export {
-    Class,
-  };
+  export { Class }
 }
 
 export namespace Nodes {
-  Nodes.Class = Class;
+  Nodes.Class = Class
 
   export const nodeTypes = {
-    Class: Nodes.Class
-  };
+    Class: Nodes.Class,
+  }
 
   export function useNodesState(Data: initialDataState): NodesState {
-    const { nodes: initialNodes, edges: initialEdges } = Data;
-    
-    const [nodes, setNodes] = useState<Node[]>(initialNodes);
-    const [edges, setEdges] = useState<Edge[]>(initialEdges);
+    const { nodes: initialNodes, edges: initialEdges } = Data
 
-    const [addEdgeMode, setAddEdgeMode] = useState(false);
+    const [nodes, setNodes] = useState<Node[]>(initialNodes)
+    const [edges, setEdges] = useState<Edge[]>(initialEdges)
 
-    const addNode = useCallback((node: Node) => {
-      setNodes([...nodes, node]);
-    }, [nodes, setNodes]);
+    const [addEdgeMode, setAddEdgeMode] = useState(false)
+
+    const addNode = useCallback(
+      (node: Node) => {
+        setNodes([...nodes, node])
+      },
+      [nodes, setNodes]
+    )
 
     const editNode = useCallback((id: string, newData: any) => {
-      setNodes(nodes => {
-        return nodes.map(node => {
+      setNodes((nodes) => {
+        return nodes.map((node) => {
           if (node.id === id) {
             return {
               ...node,
@@ -52,49 +67,72 @@ export namespace Nodes {
                 ...node.data,
                 ...newData,
               },
-            };
+            }
           }
-          return node;
-        });
-      });
-    }, []);
-    
-
-    const deleteNode = useCallback((id: string) => {
-      setNodes(nodes.filter((node) => node.id !== id));
-      setEdges(edges.filter((edge) => edge.source !== id && edge.target !== id));
-    }, [nodes, edges]);
-
-    const setEdgeAnimationState = useCallback((id: string, state: boolean) => {
-      setEdges(
-        edges.map((edge) => {
-          if (edge.id === id) {
-            return {
-              ...edge,
-              animated: state,
-            };
-          }
-          return edge;
+          return node
         })
-      );
-    }, [edges]);
+      })
+    }, [])
 
-    const onNodesChange = useCallback((nodeChanges: NodeChange[]) => {
-      setNodes((nodes) => applyNodeChanges(nodeChanges, nodes));
-    }, [setNodes]);
+    const deleteNode = useCallback(
+      (id: string) => {
+        setNodes(nodes.filter((node) => node.id !== id))
+        setEdges(
+          edges.filter((edge) => edge.source !== id && edge.target !== id)
+        )
+      },
+      [nodes, edges]
+    )
 
-    const onEdgesChange = useCallback((edgesChange: EdgeChange[]) => {
-      setEdges(edges);
-    }, [edges]);
+    const setEdgeAnimationState = useCallback(
+      (id: string, state: boolean) => {
+        setEdges(
+          edges.map((edge) => {
+            if (edge.id === id) {
+              return {
+                ...edge,
+                animated: state,
+              }
+            }
+            return edge
+          })
+        )
+      },
+      [edges]
+    )
 
-    const onConnect = useCallback((params: Edge | Connection) =>
-      setEdges((eds) =>
-        addEdge({ ...params, type: 'floating', markerEnd: { type: MarkerType.Arrow } }, eds)
-      ),
-      [setEdges]
-    );
+    const onNodesChange = useCallback(
+      (nodeChanges: NodeChange[]) => {
+        setNodes((nodes) => applyNodeChanges(nodeChanges, nodes))
+      },
+      [setNodes]
+    )
 
+    const onEdgesChange = useCallback(
+      (edgesChange: EdgeChange[]) => {
+        setEdges(edges)
+      },
+      [edges]
+    )
 
+    const onConnect = useCallback(
+      (params: Edge | Connection) => {
+        setEdges((eds) =>
+          addEdge(
+            {
+              ...params,
+              type: "floating",
+              markerEnd: { type: MarkerType.Arrow },
+            },
+            eds
+          )
+        )
+        if (!event.shiftKey) {
+          setAddEdgeMode(false)
+        }
+      },
+      [setEdges, setAddEdgeMode]
+    )
 
     useEffect(() => {
       const resNodes = nodes.map((node) => {
@@ -105,14 +143,14 @@ export namespace Nodes {
               ...node.data,
               addEdgeMode: addEdgeMode,
             },
-          };
+          }
         }
-        return node;
-      });
+        return node
+      })
       if (JSON.stringify(resNodes) !== JSON.stringify(nodes)) {
-        setNodes(resNodes);
+        setNodes(resNodes)
       }
-    }, [nodes, addEdgeMode]);
+    }, [nodes, addEdgeMode])
 
     return {
       nodes,
@@ -125,7 +163,7 @@ export namespace Nodes {
       onNodesChange,
       onEdgesChange,
       addEdgeMode,
-      setAddEdgeMode
-    };
+      setAddEdgeMode,
+    }
   }
 }

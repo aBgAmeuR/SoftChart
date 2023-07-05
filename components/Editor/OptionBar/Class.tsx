@@ -28,7 +28,6 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
   return (
     <>
       <div className="mb-1 flex flex-row items-center justify-between">
-        {/* <h1 className="text-2xl font-extrabold dark:text-white">{name}</h1> */}
         <input
           className="w-[150px] -translate-x-1 rounded bg-transparent p-1 text-left text-xl font-semibold outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
           placeholder="Nom"
@@ -92,6 +91,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
             setAttributes(newAttributes);
           }}
         />
+        <span>:</span>
         <input
           className="w-[70px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
           placeholder="Type"
@@ -129,6 +129,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
             setMethods(newMethods);
           }}
         />
+        <span>:</span>
         <input
           className="w-[70px] rounded bg-transparent p-1 text-left outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-900 dark:focus:bg-neutral-900"
           placeholder="Return"
