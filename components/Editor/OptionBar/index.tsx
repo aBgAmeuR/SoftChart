@@ -1,13 +1,14 @@
-import { Edge, Node, useOnSelectionChange } from "reactflow";
+import { BackgroundVariant, Edge, Node, useOnSelectionChange } from "reactflow";
 import { ClassOptions } from "./Class";
 import { DefaultOptions } from "./Default";
 import { useEffect, useState } from "react";
 
 interface OptionBarProps {
   editNode: (id: string, newData: any) => void;
+  setBgVariant: (variant: BackgroundVariant) => void;
 }
 
-export function OptionBar({ editNode } : OptionBarProps) {
+export function OptionBar({ editNode, setBgVariant } : OptionBarProps) {
   const [entitySelected, setEntitySelected] = useState<Node | Edge | null>(null);
 
   useOnSelectionChange({
@@ -25,15 +26,15 @@ export function OptionBar({ editNode } : OptionBarProps) {
   }, [entitySelected]);
   
   function getOptions() {
-    if (!entitySelected) return <DefaultOptions />;
+    if (!entitySelected) return <DefaultOptions setBgVariant={setBgVariant} />;
     if (entitySelected.type === "Class")
       return <ClassOptions node={entitySelected as Node} editNode={editNode} />;
     else
-      return <DefaultOptions />;
+      return <DefaultOptions setBgVariant={setBgVariant} />;
   }
 
   return (
-    <div className="flex w-[350px] flex-col border-l border-neutral-100 p-4 dark:border-white/5">
+    <div className="flex w-[400px] flex-col border-l border-neutral-100 p-4 dark:border-white/5">
       {getOptions()}
     </div>
   )

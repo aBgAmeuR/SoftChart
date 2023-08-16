@@ -45,7 +45,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
         <div className="flex flex-row justify-between">
           <h1 className="text-xl font-medium dark:text-white">Attributs</h1>
           <button
-            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-slate-50 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-900 "
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-green-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-green-600 "
             onClick={() => setAttributes([...attributes, { name: "", type: "" }])}
           >+</button>
         </div>
@@ -57,7 +57,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
         <div className="flex flex-row justify-between">
           <h1 className="text-xl font-medium dark:text-white">Méthodes</h1>
           <button
-            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-slate-50 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-neutral-900 "
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-green-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-green-600 "
             onClick={() => setMethods([...methods, { name: "", return: "", visibility: "none" }])}
           >+</button>
         </div>
@@ -102,6 +102,10 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
             setAttributes(newAttributes);
           }}
         />
+        <button
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-red-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-red-500"
+            onClick={() => setAttributes(attributes.filter((_, i) => i !== index))}
+        ><p className="=text-[20px] -translate-y-0.5">-</p></button>
       </div>
     );
   }
@@ -140,6 +144,10 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
             setMethods(newMethods);
           }}
         />
+        <button
+            className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-red-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-red-500"
+            onClick={() => setMethods(methods.filter((_, i) => i !== index))}
+        ><p className="=text-[20px] -translate-y-0.5">-</p></button>
       </div>
     );
   }

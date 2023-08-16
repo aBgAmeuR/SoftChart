@@ -4,6 +4,7 @@ import {
 } from "@reactflow/core";
 import ReactFlow, {
   Background,
+  BackgroundVariant,
   Controls,
 } from "reactflow";
 import "reactflow/dist/style.css";
@@ -13,6 +14,7 @@ import { initialDataState } from "@/types/ClassDiagram";
 import { Edges } from "./Edges";
 import ConnectionLine from "./Edges/ConnectionLine";
 import { OptionBar } from "./OptionBar";
+import { useState } from "react";
 
 const Data: initialDataState = {
   nodes: [
@@ -132,6 +134,7 @@ const Data: initialDataState = {
 export function Editor() {
   const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNode, addEdgeMode, setAddEdgeMode, editNode } =
     Nodes.useNodesState(Data);
+  const [bgVariant, setBgVariant] = useState<BackgroundVariant>(BackgroundVariant.Dots);
 
   return (
     <div className="flex h-[calc(100vh_-_56px)] flex-row ">
@@ -155,7 +158,7 @@ export function Editor() {
         connectionLineComponent={ConnectionLine}
         connectionLineType={ConnectionLineType.SmoothStep}
       >
-        <Background />
+        <Background variant={bgVariant} />
         <Controls />
       </ReactFlow>
       <Bar
@@ -171,7 +174,7 @@ export function Editor() {
         addEdgeMode={addEdgeMode}
         setAddEdgeMode={setAddEdgeMode}
       />
-      <OptionBar editNode={editNode} />
+      <OptionBar editNode={editNode} setBgVariant={setBgVariant} />
     </div>
   );
 }
