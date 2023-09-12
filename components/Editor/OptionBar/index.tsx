@@ -1,14 +1,17 @@
 import { BackgroundVariant, Edge, Node, useOnSelectionChange } from "reactflow";
 import { ClassOptions } from "./Class";
 import { DefaultOptions } from "./Default";
+import { EdgeOptions } from "./Edge";
 import { useEffect, useState } from "react";
 
 interface OptionBarProps {
   editNode: (id: string, newData: any) => void;
+  editEdge: (id: string, newData: any) => void;
   setBgVariant: (variant: BackgroundVariant) => void;
+  deleteEdge: (id: string) => void;
 }
 
-export function OptionBar({ editNode, setBgVariant } : OptionBarProps) {
+export function OptionBar({ editNode, setBgVariant, editEdge, deleteEdge }: OptionBarProps) {
   const [entitySelected, setEntitySelected] = useState<Node | Edge | null>(null);
 
   useOnSelectionChange({
@@ -24,11 +27,15 @@ export function OptionBar({ editNode, setBgVariant } : OptionBarProps) {
   useEffect(() => {
     console.log(entitySelected);
   }, [entitySelected]);
-  
+
   function getOptions() {
+    console.log(entitySelected);
+
     if (!entitySelected) return <DefaultOptions setBgVariant={setBgVariant} />;
     if (entitySelected.type === "Class")
       return <ClassOptions node={entitySelected as Node} editNode={editNode} />;
+    if (entitySelected.type === "floating")
+      return <EdgeOptions edge={entitySelected as Edge} editEdge={editEdge} deleteEdge={deleteEdge} />;
     else
       return <DefaultOptions setBgVariant={setBgVariant} />;
   }

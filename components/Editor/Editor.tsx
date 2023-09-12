@@ -132,7 +132,7 @@ const Data: initialDataState = {
 };
 
 export function Editor() {
-  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNode, addEdgeMode, setAddEdgeMode, editNode } =
+  const { nodes, edges, onNodesChange, onEdgesChange, onConnect, addNode, addEdgeMode, setAddEdgeMode, editNode, editEdge, deleteEdge } =
     Nodes.useNodesState(Data);
   const [bgVariant, setBgVariant] = useState<BackgroundVariant>(BackgroundVariant.Dots);
 
@@ -174,7 +174,7 @@ export function Editor() {
         addEdgeMode={addEdgeMode}
         setAddEdgeMode={setAddEdgeMode}
       />
-      <OptionBar editNode={editNode} setBgVariant={setBgVariant} />
+      <OptionBar editNode={editNode} editEdge={editEdge} deleteEdge={deleteEdge} setBgVariant={setBgVariant} />
     </div>
   );
 }

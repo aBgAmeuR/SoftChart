@@ -29,6 +29,8 @@ export type NodesState = {
   onConnect: OnConnect
   addEdgeMode: boolean
   setAddEdgeMode: (state: boolean) => void
+  editEdge: (id: string, newData: any) => void
+  deleteEdge: (id: string) => void
 }
 
 export declare namespace Nodes {
@@ -135,6 +137,30 @@ export namespace Nodes {
       [shiftPressed]
     )
 
+    const editEdge = useCallback((id: string, newData: any) => {
+      setEdges((edges) => {
+        return edges.map((edge) => {
+          if (edge.id === id) {
+            return {
+              ...edge,
+              data: {
+                ...edge.data,
+                ...newData,
+              },
+            }
+          }
+          return edge
+        })
+      })
+    }, [])
+
+    const deleteEdge = useCallback(
+      (id: string) => {
+        setEdges(edges.filter((edge) => edge.id !== id))
+      },
+      [edges]
+    )
+    
     useEffect(() => {
       const resNodes = nodes.map((node) => {
         if (node.data.addEdgeMode !== addEdgeMode) {
@@ -187,6 +213,8 @@ export namespace Nodes {
       onEdgesChange,
       addEdgeMode,
       setAddEdgeMode,
+      editEdge,
+      deleteEdge,
     }
   }
 }
