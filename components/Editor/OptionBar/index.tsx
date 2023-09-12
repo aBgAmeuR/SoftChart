@@ -29,8 +29,6 @@ export function OptionBar({ editNode, setBgVariant, editEdge, deleteEdge }: Opti
   }, [entitySelected]);
 
   function getOptions() {
-    console.log(entitySelected);
-
     if (!entitySelected) return <DefaultOptions setBgVariant={setBgVariant} />;
     if (entitySelected.type === "Class")
       return <ClassOptions node={entitySelected as Node} editNode={editNode} />;
