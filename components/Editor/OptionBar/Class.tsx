@@ -105,7 +105,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
         <button
             className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-red-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-red-500"
             onClick={() => setAttributes(attributes.filter((_, i) => i !== index))}
-        ><p className="=text-[20px] -translate-y-0.5">-</p></button>
+        ><p className="=text-[20px]">-</p></button>
       </div>
     );
   }
@@ -147,7 +147,7 @@ export function ClassOptions({ node, editNode }: ClassOptionsProps) {
         <button
             className="box-border flex h-[28px] w-[28px] items-center justify-center rounded bg-neutral-100 p-1 text-xl font-normal text-neutral-800 hover:bg-red-500 dark:bg-neutral-800 dark:text-neutral-400 dark:hover:bg-red-500"
             onClick={() => setMethods(methods.filter((_, i) => i !== index))}
-        ><p className="=text-[20px] -translate-y-0.5">-</p></button>
+        ><p className="=text-[20px]">-</p></button>
       </div>
     );
   }

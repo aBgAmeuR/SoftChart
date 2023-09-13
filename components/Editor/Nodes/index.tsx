@@ -16,8 +16,6 @@ import {
 import { initialDataState } from "@/types/ClassDiagram"
 
 import Class from "./Class"
-import { log } from "console"
-import { get } from "http"
 
 export type NodesState = {
   nodes: Node[]
