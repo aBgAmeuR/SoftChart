@@ -125,7 +125,15 @@ export namespace Nodes {
             {
               ...params,
               type: "floating",
-              markerEnd: { type: MarkerType.Arrow },
+              markerStart: undefined,
+              markerEnd: undefined,
+              data: {
+                label: "",
+                path: "line",
+                startLabel: "",
+                endLabel: "",
+              },
+              style: { strokeWidth: 2 },
             },
             eds
           )
