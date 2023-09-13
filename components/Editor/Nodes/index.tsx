@@ -16,6 +16,8 @@ import {
 import { initialDataState } from "@/types/ClassDiagram"
 
 import Class from "./Class"
+import { log } from "console"
+import { get } from "http"
 
 export type NodesState = {
   nodes: Node[]
@@ -29,7 +31,7 @@ export type NodesState = {
   onConnect: OnConnect
   addEdgeMode: boolean
   setAddEdgeMode: (state: boolean) => void
-  editEdge: (id: string, newData: any) => void
+  editEdge: (id: string, label: string, markerStart: string, markerEnd: string, path: string, startLabel: string, endLabel: string) => void
   deleteEdge: (id: string) => void
 }
 
@@ -137,16 +139,28 @@ export namespace Nodes {
       [shiftPressed]
     )
 
-    const editEdge = useCallback((id: string, newData: any) => {
+    const editEdge = useCallback((id: string, label: string, markerStart: string, markerEnd: string, path: string, startLabel: string, endLabel: string) => {
+      const getMarkerType = (marker: string) => {
+        if (marker === "arrow") return { type: MarkerType.Arrow, strokeWidth: 2 }
+        else if (marker === "arrowclosed") return { type: MarkerType.ArrowClosed, strokeWidth: 2 }
+        else return undefined
+      }
+
       setEdges((edges) => {
         return edges.map((edge) => {
           if (edge.id === id) {
             return {
               ...edge,
+              label: label,
+              markerStart: getMarkerType(markerStart),
+              markerEnd: getMarkerType(markerEnd),
               data: {
                 ...edge.data,
-                ...newData,
-              },
+                label: label,
+                path: path,
+                startLabel: startLabel,
+                endLabel: endLabel,
+              }
             }
           }
           return edge
@@ -160,7 +174,7 @@ export namespace Nodes {
       },
       [edges]
     )
-    
+
     useEffect(() => {
       const resNodes = nodes.map((node) => {
         if (node.data.addEdgeMode !== addEdgeMode) {

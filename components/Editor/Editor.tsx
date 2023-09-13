@@ -21,7 +21,7 @@ const Data: initialDataState = {
     {
       id: 'n1',
       type: 'Class',
-      position: { x: 250, y: 10 },
+      position: { x: 150, y: 80 },
       data: {
         name: 'Test',
         type: 'Class',
@@ -83,7 +83,7 @@ const Data: initialDataState = {
     {
       id: 'n3',
       type: 'Class',
-      position: { x: 750, y: 150 },
+      position: { x: 500, y: 250 },
       data: {
         name: 'Test 3',
         type: 'interface',
@@ -111,22 +111,28 @@ const Data: initialDataState = {
       source: 'n1',
       target: 'n2',
       type: 'floating',
-      markerEnd: { type: MarkerType.Arrow },
+      markerEnd: { type: MarkerType.Arrow, strokeWidth: 2 },
       data: {
-        type: 'association',
-        path: 'beziera'
-      }
+        label: 'test2',
+        path: 'beziera',
+        startLabel: '1',
+      },
+      style: { strokeWidth: 2 },
     },
     {
       id: '1to3',
       source: 'n1',
       target: 'n3',
       type: 'floating',
-      markerEnd: { type: MarkerType.Arrow },
+      markerStart: { type: MarkerType.ArrowClosed, strokeWidth: 2 },
+      markerEnd: { type: MarkerType.Arrow, strokeWidth: 2 },
       data: {
-        type: 'association',
-        path: 'beziera'
-      }
+        label: 'test',
+        path: 'bezier',
+        startLabel: '2',
+        endLabel: '1.n',
+      },
+      style: { strokeWidth: 2 },
     }
   ]
 };
