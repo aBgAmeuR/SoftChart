@@ -1,10 +1,17 @@
 import { Save } from "lucide-react";
 import { ThemeToggle } from "../theme-toggle";
+import { Icons } from "../icons";
+import { siteConfig } from "@/config/site";
 
 export function AppBar() {
   return (
     <div className="flex h-14 w-screen flex-row items-center justify-between border-b border-neutral-100 bg-white p-2 px-4 dark:border-white/5 dark:bg-neutral-900">
-      <div className="w-1/3"></div>
+      <div className="w-1/3">
+      <div className="flex items-center space-x-2">
+        <Icons.logo className="h-6 w-6" />
+        <span className="inline-block font-bold">{siteConfig.name}</span>
+      </div>
+      </div>
       <div className="flex w-1/3 items-center justify-center">
         <input
           className="w-min rounded bg-transparent px-2 py-1 text-center text-sm outline-none duration-100 hover:bg-slate-50 focus:bg-slate-50 focus:outline-none dark:text-white dark:hover:bg-neutral-800 dark:focus:bg-neutral-800"
