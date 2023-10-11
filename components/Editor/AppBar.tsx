@@ -20,9 +20,9 @@ export function AppBar() {
         />
       </div>
       <div className="flex w-1/3 flex-row items-center justify-end gap-2">
-        <button className="rounded bg-neutral-100 p-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-400">
+        {/* <button className="rounded bg-neutral-100 p-2 text-neutral-800 dark:bg-neutral-800 dark:text-neutral-400">
           <Save size={18} strokeWidth={2} />
-        </button>
+        </button> */}
         <ThemeToggle />
       </div>
     </div>
