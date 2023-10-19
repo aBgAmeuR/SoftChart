@@ -2,7 +2,8 @@ import { BackgroundVariant, Edge, MarkerType, Node, useOnSelectionChange } from 
 import { ClassOptions } from "./Class";
 import { DefaultOptions } from "./Default";
 import { EdgeOptions } from "./Edge";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { SidebarContext } from "@/app/page";
 
 interface OptionBarProps {
   editNode: (id: string, newData: any) => void;
@@ -13,9 +14,10 @@ interface OptionBarProps {
 
 export function OptionBar({ editNode, setBgVariant, editEdge, deleteEdge }: OptionBarProps) {
   const [entitySelected, setEntitySelected] = useState<Node | Edge | null>(null);
+  let { isOpen } = useContext(SidebarContext);
 
   useOnSelectionChange({
-    onChange: (e) => {      
+    onChange: (e) => {
       const node = e.nodes[0];
       const edge = e.edges[0];
       if (entitySelected?.type === "floating" && !node) return;
@@ -36,7 +38,7 @@ export function OptionBar({ editNode, setBgVariant, editEdge, deleteEdge }: Opti
   }
 
   return (
-    <div className="flex w-[400px] flex-col border-l border-neutral-100 p-4 dark:border-white/5">
+    <div className={`flex ${isOpen ? 'w-[400px]' : 'hidden'} flex-col border-l border-neutral-100 p-4 dark:border-white/5`}>
       {getOptions()}
     </div>
   )
