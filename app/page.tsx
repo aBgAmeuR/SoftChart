@@ -1,28 +1,18 @@
-"use client";
+"use client"
 
-import React, { SetStateAction } from "react";
-import { ReactFlowProvider } from "reactflow";
-import { AppBar } from "@/components/Editor/AppBar";
-import { Editor } from "@/components/Editor/Editor";
-import { createContext, useState } from 'react';
+import React, { useState } from "react"
+import { ReactFlowProvider } from "reactflow"
 
-interface AppContextInterface {
-  isOpen: boolean;
-  setIsOpen: React.Dispatch<SetStateAction<boolean>>;
-}
-export const ContextDefaultValue: AppContextInterface = {
-  isOpen: true,
-  setIsOpen: () => true
-}
-export const SidebarContext = createContext(ContextDefaultValue);
+import SidebarContext from "@/hooks/SidebarContext"
+import { AppBar } from "@/components/Editor/AppBar"
+import { Editor } from "@/components/Editor/Editor"
 
 export default function EditPage() {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
-  const value: AppContextInterface = { isOpen, setIsOpen }
+  const [isOpen, setIsOpen] = useState<boolean>(true)
 
   return (
     <>
-      <SidebarContext.Provider value={value}>
+      <SidebarContext.Provider value={{ isOpen, setIsOpen }}>
         <ReactFlowProvider>
           <AppBar />
           <Editor />
